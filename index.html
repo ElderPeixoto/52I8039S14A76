@@ -48,8 +48,8 @@
 
 <div id="celebrate" class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center" onclick="this.classList.add('hidden')">
   <div class="text-center">
-    <div class="font-black text-white leading-none" style="font-family:'Playfair Display',serif;font-size:11rem;text-shadow:0 8px 0 #e30613,0 0 40px #e30613">L</div>
-    <div class="text-white text-4xl font-extrabold mt-2 tracking-wide">FAZ O L!</div>
+    <div class="font-black text-white leading-none" style="font-family:'Playfair Display',serif;font-size:11rem;text-shadow:0 8px 0 #be185d,0 0 40px #f472b6">🤱</div>
+    <div class="text-white text-4xl font-extrabold mt-2 tracking-wide">DOULA DE ELITE!</div>
     <div class="text-pink-200 mt-3 text-sm">13/13 ⭐️ toque para fechar</div>
   </div>
 </div>
@@ -162,7 +162,7 @@
       </div>
       <span class="block pl-6 text-xs font-normal text-rose-800 mt-1">Todo o tempo do mundo, comidas, bebidas, doces à vontade e higiene decente.. só qualidade!</span>
     </label>
-    <p class="note text-sm font-medium text-rose-900">💡 <b>Dica:</b> escolhendo o Meu Quarto, você faz o L! 😉</p>
+    <p class="note text-sm font-medium text-rose-900">💡 <b>Dica:</b> escolhendo o Meu Quarto, você ganha o selo de Doula de Elite! 😉</p>
     <p class="note">✨ Eu cuido de tudo, pode deixar comigo... 😉</p>
   </div>
   <p id="err3" class="err hidden">Escolha uma opção para continuar.</p>
@@ -258,7 +258,7 @@ for(let i=0;i<14;i++){
 function celebrate(){
   const o=$('celebrate');o.classList.remove('hidden');
   if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  const cols=['#e30613','#ffffff','#b0000f','#ff4d5a'];
+  const cols=['#f472b6','#ffffff','#be185d','#fbcfe8'];
   for(let i=0;i<90;i++){
     const c=document.createElement('div');c.className='conf';
     if(i%6===0){c.textContent='⭐️';}else{c.style.cssText+=`width:${6+Math.random()*8}px;height:${10+Math.random()*10}px;background:${cols[i%cols.length]};border-radius:2px`;}
@@ -390,10 +390,10 @@ function summary(){
   $('s-mot').textContent=M.est==='sim'?'Esticadinha: '+M.motel:'Na volta eu deixo você em casa 😉';
   const n=calc();
   const sl = n===13
-    ? ['☭🔥',' Esquerdista e Safada de Elite (Faz o L!)','Pontuação máxima, você zerou a safadeza e garantiu a revolução completa sem pressa! 😈','#9f1239']
+    ? ['🤱🔥',' Doula de Elite','Pontuação máxima, você acolheu cada etapa do date com todo o cuidado e sem pressa! 😈','#9f1239']
     : n===12
-      ? ['☭😏',' Quase Esquerdista de Elite','Você quase fez o L! Dica: o Meu Quarto libera a revolução sem limites e vale 1 ponto a mais 😉','#a21caf']
-      : ['😇',' Comportada da Direita','Comportada demais hoje! ✨','#b45309'];
+      ? ['🤱😏',' Quase Doula de Elite','Você quase chegou lá! Dica: o Meu Quarto libera o cuidado sem limites e vale 1 ponto a mais 😉','#a21caf']
+      : ['😇',' Doula Comportada','Comportada demais hoje! ✨','#b45309'];
   $('aviso').classList.toggle('hidden',n!==13);
   $('seal').style.background=sl[3];
   $('seal').innerHTML=`<div class="text-4xl">${sl[0]}</div><div class="text-base font-bold mt-1">Selo ${sl[1]}</div><div class="mt-1">${n}/13 ⭐️</div><div class="mt-1 font-normal">${sl[2]}</div>`;
@@ -453,7 +453,7 @@ document.querySelectorAll('[data-est]').forEach(b=>b.onclick=()=>{
 document.querySelectorAll('[name=motel]').forEach(r=>r.onchange=()=>{
   M.motel=r.value;
   $('err3').classList.add('hidden');
-  update(M.motel===CMG?'escolheu o Meu Quarto (FAZ O L!) 🌟':'escolheu o Dragon Motel 🐉');
+  update(M.motel===CMG?'escolheu o Meu Quarto (DOULA DE ELITE!) 🌟':'escolheu o Dragon Motel 🐉');
 });
 
 $('to-sum').onclick=()=>{
