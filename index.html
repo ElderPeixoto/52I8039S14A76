@@ -57,7 +57,7 @@
 <main id="main" class="relative z-10 max-w-md mx-auto px-4 pt-20 pb-44">
 
 <!-- ================= ISABELLE ================= -->
-<div id="patricia">
+<div id="isabelle">
 <div id="peek" aria-hidden="true" class="absolute right-8 select-none" style="top:-4.4rem;z-index:0;width:6.5rem;height:5.5rem">
 <svg viewBox="0 0 100 85" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="22" cy="52" rx="9" ry="14" fill="#fff"/><ellipse cx="78" cy="52" rx="9" ry="14" fill="#fff"/>
@@ -97,7 +97,6 @@
   <div id="blk-where" class="space-y-3">
     <h2>🍴 Onde?</h2>
     <p class="note">📌 Eu faço a reserva!</p>
-    <div class="opt" role="button" tabindex="0" data-rest="Fivo Cozinha">🍽️ Fivo Cozinha <a class="ml-1 text-pink-700 underline text-sm" href="https://www.instagram.com/fivocozinha/" target="_blank" rel="noopener">@fivocozinha</a></div>
     <div class="opt" role="button" tabindex="0" data-rest="Vignoli">🍝 Vignoli <a class="ml-1 text-pink-700 underline text-sm" href="https://www.instagram.com/vignolioficial/" target="_blank" rel="noopener">@vignolioficial</a></div>
   </div>
   <p id="err1" class="err hidden"></p>
@@ -235,7 +234,7 @@ const SHEET_NAME='Isabelle';
 const $=id=>document.getElementById(id);
 const CMG='Meu Quarto (Comigo)',DRG='Dragon Motel',NAO='Deixo em casa na volta';
 let S,score,M;
-const fresh=()=>({ata:null,date:'',time:'',rest:'',sim:false,addr:''});
+const fresh=()=>({ata:null,date:'',time:'',rest:'Vignoli',sim:false,addr:''});
 
 // Pontos: ataxia 3 + data 2 + restaurante 2 + sim 3 = 10
 // Com certeza + Meu Quarto +3 = 13 | Com certeza + Dragon Motel +2 = 12 | Melhor não +1 = 11
@@ -307,9 +306,11 @@ function resetAll(){
   $('date').value='';$('time').value='';markCal();
   $('a-end').value='';
   $('err2').classList.add('hidden');
-  document.querySelectorAll('#patricia .opt').forEach(b=>b.classList.remove('sel'));
+  document.querySelectorAll('#isabelle .opt').forEach(b=>b.classList.remove('sel'));
   lock(false);
-  $('score-n').textContent='0/13';$('bar').style.width='0%';$('star').style.left='0%';
+  mark('[data-rest]','rest',S.rest);
+  score=calc();
+  $('score-n').textContent=score+'/13';$('bar').style.width=score/13*100+'%';$('star').style.left=score/13*100+'%';
   $('score-reason').textContent='Responda o convite para ganhar estrelas!';
   go('p1');
 }
@@ -324,6 +325,7 @@ document.querySelectorAll('[data-ata]').forEach(b=>b.onclick=()=>{
   const res=S.ata==='res';
   if(res){S.date='';S.time='';S.rest='';S.sim=false;$('date').value='';$('time').value='';markCal();mark('[data-rest]','rest','');$('err1').classList.add('hidden');}
   lock(res);
+  if(!res){S.rest='Vignoli';mark('[data-rest]','rest',S.rest);}
   update(res?'ressalvas anotadas: agora só o Não está disponível':'topou o ombro amigo 🤝');
 });
 
